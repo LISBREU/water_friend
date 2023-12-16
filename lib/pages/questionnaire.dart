@@ -124,10 +124,13 @@ class ClimateScreen extends StatelessWidget {
         title: Text('Выберите климат'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 120.0,
+            height: 30.0,
+            child: ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -136,10 +139,14 @@ class ClimateScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('Теплый климат'),
+              child: Text('Теплый'),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
+          ),
+          SizedBox(height: 20),
+          Container(
+            width: 120.0,
+            height: 30.0,
+            child: ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -148,11 +155,11 @@ class ClimateScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('Холодный климат'),
+              child: Text('Холодный'),
             ),
-          ],
-        ),
-      ),
+          ),
+        ],
+      )),
     );
   }
 }
