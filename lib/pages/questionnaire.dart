@@ -1,6 +1,8 @@
 // gender_screen.dart
 import 'package:flutter/material.dart';
 import 'package:water_friend/pages/home_screen.dart';
+import 'package:provider/provider.dart';
+import '../functions/user_provider.dart';
 
 class GenderScreen extends StatelessWidget {
   @override
@@ -15,6 +17,8 @@ class GenderScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
+                Provider.of<UserProvider>(context, listen: false)
+                    .selectedGender = 32;
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -27,6 +31,8 @@ class GenderScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                Provider.of<UserProvider>(context, listen: false)
+                    .selectedGender = 30;
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -45,6 +51,8 @@ class GenderScreen extends StatelessWidget {
 
 // age_screen.dart
 class AgeScreen extends StatelessWidget {
+  final TextEditingController ageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,12 +64,18 @@ class AgeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              controller: ageController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(labelText: 'Возраст'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                int age = int.tryParse(ageController.text) ?? 0;
+
+                // Используйте провайдер для установки возраста
+                Provider.of<UserProvider>(context, listen: false).setAge(age);
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -81,6 +95,8 @@ class AgeScreen extends StatelessWidget {
 // weight_screen.dart
 
 class WeightScreen extends StatelessWidget {
+  final TextEditingController weightController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,12 +108,21 @@ class WeightScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              controller: weightController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(labelText: 'Вес'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                // Получите значение веса из контроллера
+                double weight = double.tryParse(weightController.text) ?? 0.0;
+
+                // Используйте провайдер для установки значения веса
+                Provider.of<UserProvider>(context, listen: false)
+                    .setWeight(weight);
+
+                // Переход на следующий экран или выполнение другой логики
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -124,14 +149,14 @@ class ClimateScreen extends StatelessWidget {
         title: Text('Выберите климат'),
       ),
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 120.0,
-            height: 30.0,
-            child: ElevatedButton(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
               onPressed: () {
+                // Используйте провайдер для установки значения теплого климата
+                Provider.of<UserProvider>(context, listen: false)
+                    .setClimate(1.3);
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -141,13 +166,12 @@ class ClimateScreen extends StatelessWidget {
               },
               child: Text('Теплый'),
             ),
-          ),
-          SizedBox(height: 20),
-          Container(
-            width: 120.0,
-            height: 30.0,
-            child: ElevatedButton(
+            SizedBox(height: 20),
+            ElevatedButton(
               onPressed: () {
+                // Используйте провайдер для установки значения холодного климата
+                Provider.of<UserProvider>(context, listen: false)
+                    .setClimate(1.0);
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -157,9 +181,9 @@ class ClimateScreen extends StatelessWidget {
               },
               child: Text('Холодный'),
             ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
