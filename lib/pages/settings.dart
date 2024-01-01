@@ -25,9 +25,7 @@ class _SettingsState extends State<Settings> {
           height: 50,
           child: ElevatedButton(
             onPressed: () {
-              LocalNotification.showBigTextNotification(
-                  title: 'Water_Friend',
-                  body: 'Пора выпить воды !',
+              LocalNotification.startAutomaticNotifications(
                   flutterLocalNotificationsPlugin:
                       flutterLocalNotificationsPlugin);
             },

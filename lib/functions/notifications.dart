@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class LocalNotification {
@@ -14,11 +15,24 @@ class LocalNotification {
     await flutterLocalNotificationsPlugin.initialize(initilizationSettings);
   }
 
+  static void startAutomaticNotifications({
+    required FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
+  }) {
+    const Duration duration = Duration(seconds: 30);
+
+    Timer.periodic(duration, (Timer timer) {
+      // Вызов функции отправки уведомления
+      showBigTextNotification(
+        title: "Water Friend",
+        body: "Пора выпить воды!",
+        flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
+      );
+    });
+  }
+
   static Future showBigTextNotification({
-    var id = 0,
     required String title,
     required String body,
-    var payload,
     required FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
   }) async {
     AndroidNotificationDetails androidNotificationDetails =
