@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
                       },
                       child: Text('Добавить 250 мл'),
                     ),
-                    Text('Количество воды: $waterIntake мл'),
+                    Text('Количество выпитой воды: $waterIntake мл'),
                   ],
                 );
               },
