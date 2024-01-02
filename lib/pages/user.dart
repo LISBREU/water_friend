@@ -40,6 +40,7 @@ class _UserState extends State<User> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: MediaQuery.of(context).padding.top + 20.0),
                 Text('Пол: $genderText'),
                 SizedBox(height: 16.0),
                 Row(
