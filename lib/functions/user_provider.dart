@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserProvider with ChangeNotifier {
-  int _selectedGender = 0;
-  int _age = 0;
-  double _weight = 0.0;
+  int _selectedGender = 1;
+  int _age = 1;
+  double _weight = 1.0;
   double _climate = 1.0;
   double _waterIntake = 0.0;
   DateTime? _lastUpdateDate;
@@ -69,9 +69,9 @@ class UserProvider with ChangeNotifier {
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _selectedGender = prefs.getInt('selectedGender') ?? 0;
-    _age = prefs.getInt('age') ?? 0;
-    _weight = prefs.getDouble('weight') ?? 0.0;
+    _selectedGender = prefs.getInt('selectedGender') ?? 1;
+    _age = prefs.getInt('age') ?? 1;
+    _weight = prefs.getDouble('weight') ?? 1.0;
     _climate = prefs.getDouble('climate') ?? 1.0;
     _waterIntake = prefs.getDouble('waterIntake') ?? 0.0;
     int lastUpdateDateInMillis = prefs.getInt('lastUpdateDate') ?? 0;

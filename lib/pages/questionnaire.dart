@@ -26,6 +26,9 @@ class GenderScreen extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(140, 34), // Установите размер кнопки
+              ),
               child: Text('Мужской'),
             ),
             SizedBox(height: 20),
@@ -40,6 +43,9 @@ class GenderScreen extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(140, 34), // Установите размер кнопки
+              ),
               child: Text('Женский'),
             ),
           ],
@@ -71,7 +77,7 @@ class AgeScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                int age = int.tryParse(ageController.text) ?? 0;
+                int age = int.tryParse(ageController.text) ?? 1;
 
                 // Используйте провайдер для установки возраста
                 Provider.of<UserProvider>(context, listen: false).setAge(age);
@@ -83,6 +89,9 @@ class AgeScreen extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(140, 34), // Установите размер кнопки
+              ),
               child: Text('Далее'),
             ),
           ],
@@ -116,7 +125,7 @@ class WeightScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Получите значение веса из контроллера
-                double weight = double.tryParse(weightController.text) ?? 0.0;
+                double weight = double.tryParse(weightController.text) ?? 1.0;
 
                 // Используйте провайдер для установки значения веса
                 Provider.of<UserProvider>(context, listen: false)
@@ -130,6 +139,9 @@ class WeightScreen extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(140, 34), // Установите размер кнопки
+              ),
               child: Text('Далее'),
             ),
           ],
@@ -164,6 +176,9 @@ class ClimateScreen extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(140, 34), // Установите размер кнопки
+              ),
               child: Text('Теплый'),
             ),
             SizedBox(height: 20),
@@ -179,6 +194,9 @@ class ClimateScreen extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(140, 34), // Установите размер кнопки
+              ),
               child: Text('Холодный'),
             ),
           ],

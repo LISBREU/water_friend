@@ -35,16 +35,22 @@ class Home extends StatelessWidget {
                 return Column(
                   children: [
                     Text('Количество воды: $maxWaterIntake мл'),
+                    SizedBox(height: 20),
                     LinearProgressIndicator(
                       value: waterIntake / maxWaterIntake,
                     ),
+                    SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
                         // Используйте метод провайдера для добавления воды
                         userProvider.addWaterIntake(250.0);
                       },
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(160, 34), // Установите размер кнопки
+                      ),
                       child: Text('Добавить 250 мл'),
                     ),
+                    SizedBox(height: 20),
                     Text('Количество выпитой воды: $waterIntake мл'),
                   ],
                 );
